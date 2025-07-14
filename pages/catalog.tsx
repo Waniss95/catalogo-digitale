@@ -93,101 +93,109 @@ const thumbnails = [
   "MH89 cosmos viola-blu.png",
   "MH90 cosmos magenta-gold.png"
 ];
-
 export default function Catalog() {
   return (
-    <div style={{ backgroundColor: "black", minHeight: "100vh", padding: "40px" }}>
-      {/* LOGO */}
-      <div style={{ position: "absolute", top: 0, left: 80, zIndex: 2 }}>
+    <div style={styles.container}>
+      {/* Logo posizionato correttamente */}
+      <div style={styles.logoWrapper}>
         <Image
           src="/logo.png"
           alt="Logo"
-          width={300}
-          height={160}
+          width={200}
+          height={120}
           style={{ objectFit: "contain" }}
         />
       </div>
 
-      <h1 style={{
-        color: "white",
-        textAlign: "center",
-        fontSize: "50px",
-        fontWeight: 600,
-        marginBottom: "40px",
-        fontFamily: "'Montserrat', sans-serif",
-        letterSpacing: "1px"
-      }}>
-        Coating Collection
-      </h1>
+      <h1 style={styles.title}>Coating Collection</h1>
 
-      {/* WRAPPER per scroll orizzontale su schermi piccoli */}
-      <div style={{ overflowX: "auto" }}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)", // 5 colonne fisse
-          gap: "32px",
-          minWidth: "1200px", // forza lo scroll orizzontale su mobile
-          margin: "0 auto"
-        }}>
-          {thumbnails.map((fileName) => {
-            const encodedFile = encodeURIComponent(fileName);
-            const id = fileName.slice(0, 4); // Primi 4 caratteri
+      <div style={styles.grid}>
+        {thumbnails.map((fileName) => {
+          const encodedFile = encodeURIComponent(fileName);
+          const id = fileName.slice(0, 4);
 
-            return (
-              <Link key={id} href={`/sample/${id}`}>
-                <div
-                  style={{
-                    backgroundColor: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.15)",
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    boxShadow: "0 0 12px rgba(255, 255, 255, 0.05)",
-                    transition: "all 0.3s ease",
-                    cursor: "pointer",
-                    padding: "12px",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget;
-                    el.style.transform = "scale(1.03)";
-                    el.style.boxShadow = "0 0 30px rgba(255,255,255,0.15)";
-                    el.style.border = "1px solid rgba(255,255,255,0.3)";
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget;
-                    el.style.transform = "scale(1)";
-                    el.style.boxShadow = "0 0 12px rgba(255,255,255,0.05)";
-                    el.style.border = "1px solid rgba(255,255,255,0.15)";
-                  }}
-                >
-                  <img
-                    src={`/miniatures/${encodedFile}`}
-                    alt={fileName}
-                    style={{
-                      width: "90%",
-                      borderRadius: "12px",
-                      display: "block",
-                    }}
-                  />
-                  <div style={{
-                    marginTop: "12px",
-                    color: "white",
-                    fontSize: "14px",
-                    fontWeight: 300,
-                    letterSpacing: "0.5px",
-                    fontFamily: "'Montserrat', sans-serif"
-                  }}>
-                    {id}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+          return (
+            <Link key={id} href={`/sample/${id}`} style={{ textDecoration: "none" }}>
+              <div
+                style={styles.card}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.transform = "scale(1.03)";
+                  el.style.boxShadow = "0 0 30px rgba(255,255,255,0.15)";
+                  el.style.border = "1px solid rgba(255,255,255,0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.transform = "scale(1)";
+                  el.style.boxShadow = "0 0 12px rgba(255,255,255,0.05)";
+                  el.style.border = "1px solid rgba(255,255,255,0.15)";
+                }}
+              >
+                <img
+                  src={`/miniatures/${encodedFile}`}
+                  alt={fileName}
+                  style={styles.image}
+                />
+                <div style={styles.code}>{id}</div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
 }
 
+const styles: { [key: string]: React.CSSProperties } = {
+  container: {
+    backgroundColor: "black",
+    minHeight: "100vh",
+    padding: "120px 20px 40px",
+    boxSizing: "border-box",
+    color: "white",
+    fontFamily: "'Montserrat', sans-serif",
+  },
+  logoWrapper: {
+    position: "absolute",
+    top: 20,
+    left: 20,
+    zIndex: 10,
+  },
+  title: {
+    textAlign: "center",
+    fontSize: "40px",
+    fontWeight: 600,
+    marginBottom: "40px",
+    letterSpacing: "1px",
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(5, 1fr)",
+    gap: "20px",
+  },
+  card: {
+    backgroundColor: "rgba(255,255,255,0.05)",
+    border: "1px solid rgba(255,255,255,0.15)",
+    borderRadius: "20px",
+    overflow: "hidden",
+    boxShadow: "0 0 12px rgba(255,255,255,0.05)",
+    transition: "all 0.3s ease",
+    cursor: "pointer",
+    padding: "12px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  image: {
+    width: "100%",
+    borderRadius: "12px",
+    objectFit: "cover",
+  },
+  code: {
+    marginTop: "12px",
+    color: "white",
+    fontSize: "14px",
+    fontWeight: 300,
+    letterSpacing: "0.5px",
+  },
+};
