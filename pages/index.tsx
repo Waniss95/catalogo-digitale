@@ -1,7 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [hover, setHover] = useState(false);
+
   return (
     <div style={styles.container}>
       {/* Sfondo video */}
@@ -11,13 +14,13 @@ export default function Home() {
         muted
         playsInline
         style={styles.video}
-        src="/video/intro.mp4" // <-- sostituisci con il tuo nome file video
+        src="/video/intro.mp4"
       />
 
       {/* Overlay trasparente + contenuti */}
       <div style={styles.overlay}>
         <Image
-          src="/logo.png" // <-- metti il tuo logo nella public/
+          src="/logo.png"
           alt="Logo"
           width={200}
           height={200}
@@ -25,7 +28,22 @@ export default function Home() {
         />
 
         <Link href="/catalog">
-          <button style={styles.button}>DISCOVER</button>
+          <button
+            style={{
+              ...styles.button,
+              transform: hover ? "scale(1.05)" : "scale(1)",
+              boxShadow: hover
+                ? "0 0 25px rgba(255, 255, 255, 0.3)"
+                : "0 0 10px rgba(255, 255, 255, 0.1)",
+              border: hover
+                ? "1px solid rgba(255, 255, 255, 0.6)"
+                : "1px solid rgba(255,255,255,0.3)",
+            }}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
+            DISCOVER
+          </button>
         </Link>
       </div>
     </div>
@@ -76,6 +94,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: "12px",
     backdropFilter: "blur(8px)",
     cursor: "pointer",
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease",
   },
 };
