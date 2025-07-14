@@ -1,81 +1,92 @@
-import Link from "next/link";
+import Head from "next/head";
+import { useRouter } from "next/router";
 import Image from "next/image";
 
 export default function Home() {
+  const router = useRouter();
+
   return (
-    <div style={styles.container}>
+    <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
+      <Head>
+        <title>Coating Collection</title>
+      </Head>
+
       {/* Sfondo video */}
       <video
         autoPlay
-        loop
         muted
+        loop
         playsInline
-        style={styles.video}
-        src="/video/intro.mp4" // <-- sostituisci con il tuo nome file video
-      />
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+        }}
+      >
+        <source src="/video.mp4" type="video/mp4" />
+        Il tuo browser non supporta i video HTML5.
+      </video>
 
-      {/* Overlay trasparente + contenuti */}
-      <div style={styles.overlay}>
+      {/* Logo */}
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "40px",
+        }}
+      >
         <Image
-          src="/logo.png" // <-- metti il tuo logo nella public/
+          src="/logo.png"
           alt="Logo"
-          width={200}
-          height={200}
-          style={styles.logo}
+          width={300}
+          height={160}
+          style={{ objectFit: "contain" }}
         />
+      </div>
 
-        <Link href="/catalog">
-          <button style={styles.button}>DISCOVER</button>
-        </Link>
+      {/* Bottone Discover */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "60px",
+        }}
+      >
+        <button
+          style={{
+            padding: "18px 36px",
+            fontSize: "20px",
+            color: "white",
+            background: "rgba(255, 255, 255, 0.1)",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
+            borderRadius: "20px",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+            boxShadow: "0 0 10px rgba(255, 255, 255, 0.1)",
+            cursor: "pointer",
+            transition: "all 0.3s ease-in-out",
+            fontFamily: "'Montserrat', sans-serif",
+          }}
+          onMouseEnter={(e) => {
+            const el = e.currentTarget;
+            el.style.transform = "scale(1.05)";
+            el.style.boxShadow = "0 0 30px rgba(255, 255, 255, 0.3)";
+            el.style.border = "1px solid rgba(255, 255, 255, 0.6)";
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget;
+            el.style.transform = "scale(1)";
+            el.style.boxShadow = "0 0 10px rgba(255, 255, 255, 0.1)";
+            el.style.border = "1px solid rgba(255, 255, 255, 0.3)";
+          }}
+          onClick={() => router.push("/catalog")}
+        >
+          DISCOVER
+        </button>
       </div>
     </div>
   );
 }
-
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    position: "relative",
-    width: "100%",
-    height: "100vh",
-    overflow: "hidden",
-    backgroundColor: "black",
-  },
-  video: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    zIndex: 0,
-  },
-  overlay: {
-    position: "relative",
-    zIndex: 2,
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "20px",
-    boxSizing: "border-box",
-    textAlign: "center",
-  },
-  logo: {
-    maxWidth: "80%",
-    height: "auto",
-    marginBottom: "40px",
-  },
-  button: {
-    background: "rgba(255, 255, 255, 0.1)",
-    color: "#fff",
-    padding: "15px 30px",
-    fontSize: "18px",
-    border: "1px solid rgba(255,255,255,0.3)",
-    borderRadius: "12px",
-    backdropFilter: "blur(8px)",
-    cursor: "pointer",
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-  },
-};
