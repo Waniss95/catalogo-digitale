@@ -170,7 +170,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(5, 1fr)",
+    gridTemplateColumns: "repeat(5, minmax(60px, 1fr))",
     gap: "20px",
   },
   card: {
