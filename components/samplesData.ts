@@ -798,7 +798,7 @@ export const samplesData = {
     "aspetto": "COPRENTE LUCIDO",
     "applicazione": "A TELAIO / IN PIANO",
     "materiale": "ZAMA",
-    "TEST": "Finitura Cosmos viola-blu lucido con verniciatura a solvente, aspetto , applicazione su  e base in ."
+    "TEST": "UNI EN ISO 105-D01 MI - Solidità del colore al lavaggio a secco con percloroetilene | UNI EN ISO 105-C06 MI - Solidità del colore al lavaggio domestico e commerciale | UNI EN ISO 9227 - Nebbia Salina NSS -48h- | ISO 3160/2 - Resistenza al Sudore Artificiale -24h- | UNI EN ISO 2409 - Valutazione dell'aderenza mediante quadrettatura (sup. verniciata)."
   },
   "MH90": {
     "codice": "MH90",
@@ -807,6 +807,6 @@ export const samplesData = {
     "aspetto": "COPRENTE LUCIDO",
     "applicazione": "A TELAIO / IN PIANO",
     "materiale": "ZAMA",
-    "TEST": "Finitura Cosmos viola-blu lucido con verniciatura a solvente, aspetto , applicazione su  e base in ."
+    "TEST": "UNI EN ISO 105-D01 MI - Solidità del colore al lavaggio a secco con percloroetilene | UNI EN ISO 105-C06 MI - Solidità del colore al lavaggio domestico e commerciale | UNI EN ISO 9227 - Nebbia Salina NSS -48h- | ISO 3160/2 - Resistenza al Sudore Artificiale -24h- | UNI EN ISO 2409 - Valutazione dell'aderenza mediante quadrettatura (sup. verniciata)."
   },
 };
