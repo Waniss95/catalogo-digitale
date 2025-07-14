@@ -96,8 +96,8 @@ const thumbnails = [
 export default function Catalog() {
   return (
     <div style={styles.container}>
-      {/* Logo posizionato correttamente */}
-      <div style={styles.logoWrapper}>
+      {/* Logo centrato */}
+      <div style={styles.logoContainer}>
         <Image
           src="/logo.png"
           alt="Logo"
@@ -105,42 +105,44 @@ export default function Catalog() {
           height={120}
           style={{ objectFit: "contain" }}
         />
+        <h1 style={styles.title}>Coating Collection</h1>
       </div>
 
-      <h1 style={styles.title}>Coating Collection</h1>
+      {/* Griglia miniature */}
+      <div style={styles.gridWrapper}>
+        <div style={styles.grid}>
+          {thumbnails.map((fileName) => {
+            const encodedFile = encodeURIComponent(fileName);
+            const id = fileName.slice(0, 4);
 
-      <div style={styles.grid}>
-        {thumbnails.map((fileName) => {
-          const encodedFile = encodeURIComponent(fileName);
-          const id = fileName.slice(0, 4);
-
-          return (
-            <Link key={id} href={`/sample/${id}`} style={{ textDecoration: "none" }}>
-              <div
-                style={styles.card}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget;
-                  el.style.transform = "scale(1.03)";
-                  el.style.boxShadow = "0 0 30px rgba(255,255,255,0.15)";
-                  el.style.border = "1px solid rgba(255,255,255,0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget;
-                  el.style.transform = "scale(1)";
-                  el.style.boxShadow = "0 0 12px rgba(255,255,255,0.05)";
-                  el.style.border = "1px solid rgba(255,255,255,0.15)";
-                }}
-              >
-                <img
-                  src={`/miniatures/${encodedFile}`}
-                  alt={fileName}
-                  style={styles.image}
-                />
-                <div style={styles.code}>{id}</div>
-              </div>
-            </Link>
-          );
-        })}
+            return (
+              <Link key={id} href={`/sample/${id}`} style={{ textDecoration: "none" }}>
+                <div
+                  style={styles.card}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget;
+                    el.style.transform = "scale(1.03)";
+                    el.style.boxShadow = "0 0 30px rgba(255,255,255,0.15)";
+                    el.style.border = "1px solid rgba(255,255,255,0.3)";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget;
+                    el.style.transform = "scale(1)";
+                    el.style.boxShadow = "0 0 12px rgba(255,255,255,0.05)";
+                    el.style.border = "1px solid rgba(255,255,255,0.15)";
+                  }}
+                >
+                  <img
+                    src={`/miniatures/${encodedFile}`}
+                    alt={fileName}
+                    style={styles.image}
+                  />
+                  <div style={styles.code}>{id}</div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -150,28 +152,36 @@ const styles: { [key: string]: React.CSSProperties } = {
   container: {
     backgroundColor: "black",
     minHeight: "100vh",
-    padding: "120px 20px 40px",
-    boxSizing: "border-box",
+    padding: "40px 20px 80px",
     color: "white",
     fontFamily: "'Montserrat', sans-serif",
+    boxSizing: "border-box",
   },
-  logoWrapper: {
-    position: "absolute",
-    top: 20,
-    left: 20,
-    zIndex: 10,
+  logoContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: "40px",
   },
   title: {
-    textAlign: "center",
-    fontSize: "40px",
+    fontSize: "36px",
     fontWeight: 600,
-    marginBottom: "40px",
+    marginTop: "20px",
+    textAlign: "center",
     letterSpacing: "1px",
+  },
+  gridWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    overflowX: "hidden", // niente scroll orizzontale
   },
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(5, minmax(60px, 1fr))",
-    gap: "20px",
+    gap: "16px",
+    width: "100%",
+    maxWidth: "1000px", // così è centrato
+    padding: "0 10px",
   },
   card: {
     backgroundColor: "rgba(255,255,255,0.05)",
@@ -192,7 +202,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     objectFit: "cover",
   },
   code: {
-    marginTop: "12px",
+    marginTop: "10px",
     color: "white",
     fontSize: "14px",
     fontWeight: 300,
