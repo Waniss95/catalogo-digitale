@@ -96,7 +96,7 @@ const thumbnails = [
 export default function Catalog() {
   return (
     <div style={styles.container}>
-      {/* Logo centrato */}
+      {/* Logo e titolo */}
       <div style={styles.logoContainer}>
         <Image
           src="/logo.png"
@@ -105,44 +105,45 @@ export default function Catalog() {
           height={120}
           style={{ objectFit: "contain" }}
         />
+
+        <div style={styles.separator}></div>
+
         <h1 style={styles.title}>Coating Collection</h1>
       </div>
 
-      {/* Griglia miniature */}
-      <div style={styles.gridWrapper}>
-        <div style={styles.grid}>
-          {thumbnails.map((fileName) => {
-            const encodedFile = encodeURIComponent(fileName);
-            const id = fileName.slice(0, 4);
+      {/* Griglia adattiva */}
+      <div style={styles.grid}>
+        {thumbnails.map((fileName) => {
+          const encodedFile = encodeURIComponent(fileName);
+          const id = fileName.slice(0, 4);
 
-            return (
-              <Link key={id} href={`/sample/${id}`} style={{ textDecoration: "none" }}>
-                <div
-                  style={styles.card}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget;
-                    el.style.transform = "scale(1.03)";
-                    el.style.boxShadow = "0 0 30px rgba(255,255,255,0.15)";
-                    el.style.border = "1px solid rgba(255,255,255,0.3)";
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget;
-                    el.style.transform = "scale(1)";
-                    el.style.boxShadow = "0 0 12px rgba(255,255,255,0.05)";
-                    el.style.border = "1px solid rgba(255,255,255,0.15)";
-                  }}
-                >
-                  <img
-                    src={`/miniatures/${encodedFile}`}
-                    alt={fileName}
-                    style={styles.image}
-                  />
-                  <div style={styles.code}>{id}</div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+          return (
+            <Link key={id} href={`/sample/${id}`} style={{ textDecoration: "none" }}>
+              <div
+                style={styles.card}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.transform = "scale(1.03)";
+                  el.style.boxShadow = "0 0 30px rgba(255,255,255,0.15)";
+                  el.style.border = "1px solid rgba(255,255,255,0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.transform = "scale(1)";
+                  el.style.boxShadow = "0 0 12px rgba(255,255,255,0.05)";
+                  el.style.border = "1px solid rgba(255,255,255,0.15)";
+                }}
+              >
+                <img
+                  src={`/miniatures/${encodedFile}`}
+                  alt={fileName}
+                  style={styles.image}
+                />
+                <div style={styles.code}>{id}</div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
@@ -163,25 +164,24 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: "center",
     marginBottom: "40px",
   },
+  separator: {
+    width: "120px",
+    height: "1px",
+    backgroundColor: "white",
+    margin: "20px 0",
+  },
   title: {
     fontSize: "36px",
     fontWeight: 600,
-    marginTop: "20px",
     textAlign: "center",
     letterSpacing: "1px",
   },
-  gridWrapper: {
-    display: "flex",
-    justifyContent: "center",
-    overflowX: "hidden", // niente scroll orizzontale
-  },
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(5, minmax(60px, 1fr))",
-    gap: "16px",
-    width: "100%",
-    maxWidth: "1000px", // così è centrato
-    padding: "0 10px",
+    gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+    gap: "20px",
+    maxWidth: "1200px",
+    margin: "0 auto",
   },
   card: {
     backgroundColor: "rgba(255,255,255,0.05)",
