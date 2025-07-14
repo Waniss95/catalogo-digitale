@@ -12,13 +12,20 @@ const ModelViewer = dynamic(() => import("../../components/ModelViewer"), {
 export default function SamplePage() {
   const router = useRouter();
   const { id } = router.query;
+
   const [isMobile, setIsMobile] = useState(false);
+  const [viewportHeight, setViewportHeight] = useState("100vh");
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
+
+      // Altezza reale del viewport (fix Android)
+      const vh = window.innerHeight * 0.01;
+      setViewportHeight(`${vh * 100}px`);
     };
-    handleResize(); // inizializza
+
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -41,7 +48,7 @@ export default function SamplePage() {
       <div
         style={{
           flex: 1,
-          height: isMobile ? "60vh" : "100vh",
+          height: isMobile ? "60vh" : viewportHeight,
         }}
       >
         <Canvas camera={{ position: [0, 0, 30] }}>
@@ -117,4 +124,3 @@ export default function SamplePage() {
     </div>
   );
 }
-
