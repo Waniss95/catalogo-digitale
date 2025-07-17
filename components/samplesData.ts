@@ -64,7 +64,7 @@ export const samplesData = {
   },
   "MH08": {
     "codice": "MH08",
-    "nome": "ORO 8670 3N VIBRATO BRASS",
+    "nome": "ORO 8670 3N VIBRATO BRASS (SMART)",
     "categoria": "GALVANICA + CATAFORESI LUCIDA",
     "aspetto": "COPRENTE LUCIDO",
     "applicazione": "TELAIO - STATICA",
@@ -145,7 +145,7 @@ export const samplesData = {
   },
   "MH17": {
     "codice": "MH17",
-    "nome": "ORO 8670 3N INVECCHIATO 77",
+    "nome": "ORO 8670 3N INVECCHIATO 77 (SMART)",
     "categoria": "GALVANICA + CATAFORESI LUCIDA",
     "aspetto": "COPRENTE LUCIDO",
     "applicazione": "TELAIO - STATICA",
@@ -154,7 +154,7 @@ export const samplesData = {
   },
   "MH18": {
     "codice": "MH18",
-    "nome": "ORO 8693 2N MATT ROCKS",
+    "nome": "ORO 8693 2N MATT ROCKS (SMART)",
     "categoria": "GALVANICA + CATAFORESI LUCIDA",
     "aspetto": "COPRENTE LUCIDO",
     "applicazione": "TELAIO - STATICA",
@@ -172,7 +172,7 @@ export const samplesData = {
   },
   "MH20": {
     "codice": "MH20",
-    "nome": "ORO 8670 3N INVECCHIATO 7794",
+    "nome": "ORO 8670 3N INVECCHIATO 7794 (SMART)",
     "categoria": "GALVANICA + CATAFORESI SEMILUCIDA",
     "aspetto": "COPRENTE LUCIDO",
     "applicazione": "TELAIO - STATICA",
@@ -235,7 +235,7 @@ export const samplesData = {
   },
   "MH27": {
     "codice": "MH27",
-    "nome": "ORO CHIARO 8651 INVECCHIATO ANALLERGICO",
+    "nome": "ORO CHIARO 8651 (M1) INVECCHIATO ANALLERGICO",
     "categoria": "GALVANICA + CATAFORESI LUCIDA",
     "aspetto": "COPRENTE LUCIDO",
     "applicazione": "TELAIO - STATICA",
