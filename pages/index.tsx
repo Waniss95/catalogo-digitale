@@ -17,7 +17,7 @@ export default function Home() {
         src="/video/intro.mp4"
       />
 
-      {/* Overlay trasparente + contenuti */}
+      {/* Overlay centrale */}
       <div style={styles.overlay}>
         <Image
           src="/logo.png"
@@ -45,25 +45,16 @@ export default function Home() {
             DISCOVER
           </button>
         </Link>
+      </div>
 
-        {/* Spacer per posizionare in basso il tasto MORE INFO */}
-        <div style={{ flexGrow: 1 }} />
-
-        {/* Nuovo bottone MORE INFO */}
+      {/* Bottone in basso MORE INFO */}
+      <div style={styles.bottomButtonContainer}>
         <a
           href="/docs/info.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <button
-            style={{
-              ...styles.button,
-              padding: "10px 24px",
-              fontSize: "14px",
-              opacity: 0.8,
-              marginBottom: "30px",
-            }}
-          >
+          <button style={styles.moreInfoButton}>
             MORE INFO
           </button>
         </a>
@@ -90,15 +81,15 @@ const styles: { [key: string]: React.CSSProperties } = {
     zIndex: 0,
   },
   overlay: {
-    position: "relative",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     zIndex: 2,
-    width: "100%",
-    height: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     padding: "20px",
-    boxSizing: "border-box",
     textAlign: "center",
   },
   logo: {
@@ -117,4 +108,25 @@ const styles: { [key: string]: React.CSSProperties } = {
     cursor: "pointer",
     transition: "transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease",
   },
+  bottomButtonContainer: {
+    position: "absolute",
+    bottom: 30,
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    zIndex: 2,
+  },
+  moreInfoButton: {
+    background: "rgba(255, 255, 255, 0.1)",
+    color: "#fff",
+    padding: "10px 22px",
+    fontSize: "14px",
+    border: "1px solid rgba(255,255,255,0.3)",
+    borderRadius: "12px",
+    backdropFilter: "blur(8px)",
+    cursor: "pointer",
+    opacity: 0.8,
+    transition: "transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease",
+  },
 };
+
