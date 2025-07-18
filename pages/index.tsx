@@ -45,6 +45,28 @@ export default function Home() {
             DISCOVER
           </button>
         </Link>
+
+        {/* Spacer per posizionare in basso il tasto MORE INFO */}
+        <div style={{ flexGrow: 1 }} />
+
+        {/* Nuovo bottone MORE INFO */}
+        <a
+          href="/docs/info.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button
+            style={{
+              ...styles.button,
+              padding: "10px 24px",
+              fontSize: "14px",
+              opacity: 0.8,
+              marginBottom: "30px",
+            }}
+          >
+            MORE INFO
+          </button>
+        </a>
       </div>
     </div>
   );
@@ -75,7 +97,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
     padding: "20px",
     boxSizing: "border-box",
     textAlign: "center",
