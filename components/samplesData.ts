@@ -37,7 +37,7 @@ export const samplesData = {
   },
   "MH05": {
     "codice": "MH05",
-    "nome": "ORO AMBRA VIBRATO NIKEL FREE",
+    "nome": "ORO AMBRA VIBRATO NICHEL FREE",
     "categoria": "GALVANICA + CATAFORESI LUCIDA",
     "aspetto": "COPRENTE LUCIDO",
     "applicazione": "TELAIO - STATICA",
@@ -181,7 +181,7 @@ export const samplesData = {
   },
   "MH21": {
     "codice": "MH21",
-    "nome": "ORO INDIO 8710 INVECCHIATO",
+    "nome": "ORO INDIO 8710 1. ANALLERGICO",
     "categoria": "GALVANICA + CATAFORESI LUCIDA",
     "aspetto": "COPRENTE LUCIDO",
     "applicazione": "TELAIO - STATICA",
@@ -190,7 +190,7 @@ export const samplesData = {
   },
   "MH22": {
     "codice": "MH22",
-    "nome": "ORO INDIO 8710 ANALLERGICO",
+    "nome": "ORO INDIO 8710 2. ANALLERGICO",
     "categoria": "GALVANICA + CATAFORESI LUCIDA",
     "aspetto": "COPRENTE LUCIDO",
     "applicazione": "TELAIO - STATICA",
@@ -388,7 +388,7 @@ export const samplesData = {
   },
   "MH44": {
     "codice": "MH44",
-    "nome": "RUTENIO ULTRABLACK 640 MATT",
+    "nome": "RUTENIO ULTRABLACK 640 MATT ANALLERGICO",
     "categoria": "GALVANICA + CATAFORESI SEMILUCIDA",
     "aspetto": "COPRENTE SEMILUCIDO",
     "applicazione": "TELAIO - STATICA",
